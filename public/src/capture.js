@@ -72,11 +72,7 @@
         streaming = true;
       }
     }, false);
-    // takepicture(2);
-    // setTimeout(() => {
-    //   takepicture(2); 
-    //   setInterval(() => takepicture(2), 2000)
-    // }, 1000);
+    
     setInterval(() => takepicture(2), 800);
 
     clearphoto();
@@ -110,7 +106,7 @@
       ctx.drawImage(video, 0, 0, width, height);
       var data = canvas2.toDataURL('image/png').replace(/^data:image\/(png|jpg);base64,/, '');
       const sendTime = Date.now();
-      fetch("https://"+(endpoint>1?"v3":"v2")+".skyeye.caspar.today/", {
+      fetch("/api/realtime", {
         method: "POST",
         headers: { "Content-Type": "application/octet-stream" },
         body: data
